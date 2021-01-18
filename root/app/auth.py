@@ -1,5 +1,6 @@
 import os
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import generate_password_hash, check_password_hash
 
 basic_auth = HTTPBasicAuth()
 
@@ -17,4 +18,5 @@ def verify(username, password):
         return True
     if not (username and password):
         return False
-    return AUTH_DATA.get(username) == password
+    if username in AUTH_DATA and check_password_hash(AUTH_DATA.get(username), password):
+        return username
