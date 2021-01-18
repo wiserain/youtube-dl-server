@@ -9,7 +9,7 @@ AUTH_DATA = {}
 authuser = os.getenv('YTBDL_SERVER_USER', '')
 authpass = os.getenv('YTBDL_SERVER_PASS', '')
 if authuser and authpass:
-    AUTH_DATA.update({authuser: authpass})
+    AUTH_DATA.update({authuser: generate_password_hash(authpass)})
 
 
 @basic_auth.verify_password
