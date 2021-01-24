@@ -107,14 +107,15 @@ def download(args):
             for f in Path(tmpdir).glob('**/*'):
                 subdir = join(dl_path, dirname(relpath(f, tmpdir)))
                 os.makedirs(subdir, exist_ok=True)
-                shutil.move(str(f), join(dl_path, relpath(f, tmpdir)))
+                if isfile(f):
+                    shutil.move(str(f), join(dl_path, relpath(f, tmpdir)))
         except Exception as e:
             print(e)
             print('Consider setting "YTBDL_I=true" to ignore youtube-dl errors')
 
     print('Cleaning incomplete directory {}'.format(tmpdir))
     try:
-        os.rmdir(tmpdir)
+        shutil.rmtree(tmpdir)
     except Exception as e:
         print('Failed to delete incomplete directory: {}'.format(e))
 
