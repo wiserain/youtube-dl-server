@@ -1,4 +1,6 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.13
+LABEL maintainer="wiserain"
+LABEL org.opencontainers.image.source https://github.com/wiserain/youtube-dl-server
 
 ENV XDG_CACHE_HOME /tmp
 
