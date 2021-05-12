@@ -3,8 +3,8 @@ name: buildx
 on:
   watch:
     types: [started]
-  schedule:
-    - cron: "0 21 * * 5"
+#   schedule:
+#     - cron: "0 21 * * 5"
   push:
     branches:
       - 'main'
